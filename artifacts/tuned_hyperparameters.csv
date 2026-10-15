@@ -1,0 +1,5 @@
+Model,candidate,hidden_dim,dropout,learning_rate,weight_decay
+Simple RNN,regularized,192,0.4,0.0015,0.0003
+Bidirectional RNN,regularized,192,0.4,0.0015,0.0003
+LSTM,wide,256,0.3,0.002,0.0001
+GRU,wide,256,0.3,0.002,0.0001

@@ -1,0 +1,135 @@
+{
+  "student": "Tanay Aggarwal",
+  "registration_number": "230911278",
+  "seed": 4403,
+  "backend": "cuda",
+  "physical_gpu": "NVIDIA GeForce RTX 3050 Laptop GPU",
+  "config": {
+    "sequence_length": 30,
+    "stride": 2,
+    "min_frequency": 2,
+    "max_vocab": 8000,
+    "embedding_dim": 128,
+    "hidden_dim": 192,
+    "dropout": 0.25,
+    "batch_size": 512,
+    "learning_rate": 0.0025,
+    "weight_decay": 0.0001,
+    "label_smoothing": 0.05,
+    "epochs": 12,
+    "patience": 3,
+    "gradient_clip": 1.0,
+    "tuning_epochs": 6,
+    "tuning_patience": 2,
+    "generation_tokens": 70,
+    "temperatures": [
+      0.5,
+      1.0,
+      1.5
+    ]
+  },
+  "tuning_protocol": {
+    "selection_metric": "validation cross-entropy",
+    "candidates_per_model": 4,
+    "selected_hyperparameters": {
+      "Simple RNN": {
+        "candidate": "regularized",
+        "hidden_dim": 192,
+        "dropout": 0.4,
+        "learning_rate": 0.0015,
+        "weight_decay": 0.0003
+      },
+      "Bidirectional RNN": {
+        "candidate": "regularized",
+        "hidden_dim": 192,
+        "dropout": 0.4,
+        "learning_rate": 0.0015,
+        "weight_decay": 0.0003
+      },
+      "LSTM": {
+        "candidate": "wide",
+        "hidden_dim": 256,
+        "dropout": 0.3,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0001
+      },
+      "GRU": {
+        "candidate": "wide",
+        "hidden_dim": 256,
+        "dropout": 0.3,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0001
+      }
+    }
+  },
+  "dataset": "Nietzsche text corpus (Keras)",
+  "dataset_tokens": 114447,
+  "vocabulary_size": 5289,
+  "best_model_by_test_perplexity": "GRU",
+  "test_metrics": [
+    {
+      "Model": "GRU",
+      "loss": 5.6738231102500505,
+      "perplexity": 291.14549069408946,
+      "accuracy": 0.1464778884810348,
+      "top5_accuracy": 0.3102604439783255,
+      "training_time_seconds": 10.273950200004037,
+      "epochs_run": 9,
+      "parameters": 2332713,
+      "configuration": "wide",
+      "hidden_dim": 256,
+      "dropout": 0.3,
+      "learning_rate": 0.002,
+      "weight_decay": 0.0001,
+      "backend": "cuda"
+    },
+    {
+      "Model": "LSTM",
+      "loss": 5.68693901962843,
+      "perplexity": 294.9892808648903,
+      "accuracy": 0.14630309386470897,
+      "top5_accuracy": 0.3181262017129872,
+      "training_time_seconds": 12.07896789998631,
+      "epochs_run": 10,
+      "parameters": 2431529,
+      "configuration": "wide",
+      "hidden_dim": 256,
+      "dropout": 0.3,
+      "learning_rate": 0.002,
+      "weight_decay": 0.0001,
+      "backend": "cuda"
+    },
+    {
+      "Model": "Simple RNN",
+      "loss": 5.714952497877372,
+      "perplexity": 303.36979225805874,
+      "accuracy": 0.14193322845656353,
+      "top5_accuracy": 0.3095612655130222,
+      "training_time_seconds": 6.6981462000112515,
+      "epochs_run": 9,
+      "parameters": 1759593,
+      "configuration": "regularized",
+      "hidden_dim": 192,
+      "dropout": 0.4,
+      "learning_rate": 0.0015,
+      "weight_decay": 0.0003,
+      "backend": "cuda"
+    },
+    {
+      "Model": "Bidirectional RNN",
+      "loss": 5.7582744223486815,
+      "perplexity": 316.8011919332268,
+      "accuracy": 0.13476664918720505,
+      "top5_accuracy": 0.3106100332109771,
+      "training_time_seconds": 7.141924600000493,
+      "epochs_run": 8,
+      "parameters": 2836905,
+      "configuration": "regularized",
+      "hidden_dim": 192,
+      "dropout": 0.4,
+      "learning_rate": 0.0015,
+      "weight_decay": 0.0003,
+      "backend": "cuda"
+    }
+  ]
+}
